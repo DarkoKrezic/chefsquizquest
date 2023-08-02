@@ -1,0 +1,56 @@
+.StyledContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  padding: 10px;
+  background-image: url("/quizseite.png");
+  background-size: cover;
+}
+
+.header {
+  margin-top: 20px;
+  align-self: flex-end;
+  color: black;
+}
+
+.chat {
+  margin-top: 20px;
+  height: 300px;
+  width: 100%;
+  border: 1px solid #000;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+.input {
+  margin-top: 100px;
+  padding: 10px;
+  padding-top: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
+  font-size: 2rem;
+}
+
+.buttonActive {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: green;
+  color: #fff;
+  cursor: pointer;
+  font-size: larger;
+}
+
+.buttonDisabled {
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  background-color: grey;
+  color: #fff;
+  cursor: not-allowed;
+  font-size: larger;
+}
