@@ -1,12 +1,18 @@
 "use client";
 import { useChat, Message } from "ai/react";
-
+import { useRef, useEffect } from "react";
 export default function ChatComponent() {
   // Vercel AI SDK (ai package) useChat()
   // useChat -> handles messages for us, user input, handling user submits, etc.
   const { input, handleInputChange, handleSubmit, isLoading, messages } =
     useChat();
   // messages -> [user asks a question, gpt-4 response, user asks again, gpt-4 responds]
+  const messagesEndRef = useRef<null | HTMLDivElement>(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(scrollToBottom, [messages]);
 
   console.log(messages);
   console.log(input);
@@ -15,7 +21,11 @@ export default function ChatComponent() {
     <div className="flex flex-col">
       {/* Nachrichtenbereich */}
       <div
-        style={{ maxHeight: "370px", color: "black" }}
+        style={{
+          maxHeight: "370px",
+          color: "black",
+          backgroundColor: "rgba(128, 128, 128, 0.5)",
+        }}
         className="flex-grow mb-auto w-full overflow-auto"
       >
         {messages.map((message: Message) => {
@@ -41,6 +51,8 @@ export default function ChatComponent() {
             </div>
           );
         })}
+        <div ref={messagesEndRef} />{" "}
+        {/* Dieses Element markiert das Ende der Nachrichten */}
       </div>
 
       {/* Formularbereich */}
