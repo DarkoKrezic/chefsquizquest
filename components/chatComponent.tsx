@@ -60,7 +60,7 @@ export default function ChatComponent() {
         <p style={{ color: "black" }}>Du:</p>
         <textarea
           className="mt-2 w-full bg-slate-600 p-2"
-          placeholder={"Lass uns eie Rude Spielen!"}
+          placeholder={"Los gehts!"}
           value={input}
           onChange={handleInputChange}
         />

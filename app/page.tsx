@@ -14,8 +14,8 @@ export default function Home() {
         className=" p-3 w-full rounded-md text-white"
         style={{ position: "fixed", bottom: "0", padding: "20px" }}
       >
-        <h2 style={{ color: "black" }} className="text-2xl">
-          Chefs Quiz Quest
+        <h2 style={{ color: "black" }} className="text">
+          Hi, ich bin Chef, lass uns eie Rude Spielen!
         </h2>
         <div>
           <ChatComponent />
