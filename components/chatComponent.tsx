@@ -23,8 +23,8 @@ export default function ChatComponent() {
       <div
         style={{
           maxHeight: "370px",
-          color: "black",
-          backgroundColor: "rgba(128, 128, 128, 0.5)",
+          color: "white",
+          backgroundColor: "rgba(50, 48, 48, 0.7)",
         }}
         className="flex-grow mb-auto w-full overflow-auto"
       >

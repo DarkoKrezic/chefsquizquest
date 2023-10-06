@@ -14,7 +14,14 @@ export default function Home() {
         className=" p-3 w-full rounded-md text-white"
         style={{ position: "fixed", bottom: "0", padding: "20px" }}
       >
-        <h2 style={{ color: "black" }} className="text">
+        <h2
+          style={{
+            color: "black",
+            backgroundColor: "white",
+            borderRadius: "10px",
+          }}
+          className="text"
+        >
           Hi, ich bin Chef, lass uns eie Rude Spielen!
         </h2>
         <div>
