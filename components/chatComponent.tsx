@@ -11,9 +11,6 @@ export default function ChatComponent() {
   };
   useEffect(scrollToBottom, [messages]);
 
-  console.log(messages);
-  console.log(input);
-
   return (
     <div className="flex flex-col">
       <div
