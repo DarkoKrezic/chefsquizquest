@@ -22,7 +22,7 @@ export default function Home() {
           }}
           className="text"
         >
-          Hi, ich bin Chef, lass uns eie Rude Spielen!
+          Hi, ich bin Chef, lass uns eine Runde Spielen!
         </h2>
         <div>
           <ChatComponent />
