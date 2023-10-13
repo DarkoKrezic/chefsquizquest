@@ -17,9 +17,7 @@ export default function DropdownComponent({
     "Geographie",
     "Politik",
     "Physik",
-    //... mehr Optionen hinzufügen
   ];
-  //   const { append } = useChat();
 
   return (
     <div className="dropdown">
