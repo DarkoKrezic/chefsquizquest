@@ -25,8 +25,19 @@ export default function Home() {
           zIndex: "-1",
         }}
       ></div>
-      <h2>Willkomen zu unserem Quiz!</h2>
-      <p>Bitte wähle ein Themengebiet aus der Liste:</p>
+      <h2
+        className="text-4xl font-bold text-center py-10"
+        style={{ backgroundColor: "rgba(50, 48, 48, 0.49)" }}
+      >
+        Willkomen zu unserem Quiz!
+      </h2>
+      <p
+        className=" text-center text-2xl py-10"
+        style={{ backgroundColor: "rgba(50, 48, 48, 0.49)" }}
+      >
+        Bitte wähle ein Themengebiet aus der Liste:
+      </p>
+
       <DropdownComponent onSetSelected={handleSelected} />
       {selected && <ChatComponent selectedOption={selected} />}
     </div>
