@@ -1,33 +1,34 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import DropdownComponent from "@/components/dropDownComponent";
 import ChatComponent from "@/components/chatComponent";
 
 export default function Home() {
+  const [selected, setSelected] = useState<string | null>(null);
+  const [topic, setTopic] = useState("");
+  const backgroundImage = "url('/quizstarthintergrund.jpeg')";
+
+  const handleSelected = (value: string) => {
+    setSelected(value);
+    setTopic(value);
+  };
+
   return (
-    <main
-      className="flex min-h-screen flex-col items-center justify-between p-24"
-      style={{
-        backgroundImage: "url(/quizimage4.png)",
-        backgroundSize: "cover",
-      }}
-    >
+    <div>
       <div
-        className=" p-3 w-full rounded-md text-white"
-        style={{ position: "fixed", bottom: "0", padding: "20px" }}
-      >
-        <h2
-          style={{
-            color: "black",
-            backgroundColor: "white",
-            borderRadius: "10px",
-          }}
-          className="text"
-        >
-          Hi, ich bin Chef, lass uns eine Runde Spielen!
-        </h2>
-        <div>
-          <ChatComponent />
-        </div>
-      </div>
-    </main>
+        style={{
+          backgroundImage: backgroundImage,
+          backgroundSize: "cover", // make it cover the whole div
+          position: "absolute", // make it fill the whole screen
+          width: "100%",
+          height: "100%",
+          zIndex: "-1",
+        }}
+      ></div>
+      <h2>Willkomen zu unserem Quiz!</h2>
+      <p>Bitte wähle ein Themengebiet aus der Liste:</p>
+      <DropdownComponent onSetSelected={handleSelected} />
+      {selected && <ChatComponent selectedOption={selected} />}
+    </div>
   );
 }
