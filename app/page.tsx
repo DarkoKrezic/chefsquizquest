@@ -6,7 +6,7 @@ import ChatComponent from "@/components/chatComponent";
 export default function Home() {
   const [selected, setSelected] = useState<string | null>(null);
   const [topic, setTopic] = useState("");
-  const backgroundImage = "url('/quizstarthintergrund.jpeg')";
+  const backgroundImage = "url('/kvisko.jpeg')";
 
   const handleSelected = (value: string) => {
     setSelected(value);
@@ -23,17 +23,25 @@ export default function Home() {
           width: "100%",
           height: "100%",
           zIndex: "-1",
+          backgroundPosition: "center",
         }}
       ></div>
       <h2
         className="text-4xl font-bold text-center py-10"
-        style={{ backgroundColor: "rgba(50, 48, 48, 0.49)" }}
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.49)",
+          borderRadius: "25px",
+          textShadow: "3px 5px 10px rgb(8, 8, 9)",
+        }}
       >
-        Willkomen zu unserem Quiz!
+        Hi, ich bin Quizzko!
       </h2>
       <p
-        className=" text-center text-2xl py-10"
-        style={{ backgroundColor: "rgba(50, 48, 48, 0.49)" }}
+        className="text-center text-2xl px-2 py-4"
+        style={{
+          backgroundColor: "rgba(0, 0, 0, 0.49)",
+          borderRadius: "25px",
+        }}
       >
         Bitte wähle ein Themengebiet aus der Liste:
       </p>

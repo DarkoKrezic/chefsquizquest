@@ -17,24 +17,32 @@ export default function DropdownComponent({
     "geographie",
     "Politik",
     "Physik",
+    "Chemie",
+    "Informatik",
+    "Javascript",
+    "Python",
   ];
 
   return (
     <div
-      className="flex items-center justify-center py-10"
+      className="flex items-center justify-center py-7"
       style={{
-        backgroundColor: "rgba(50, 48, 48, 0.352)",
-        borderRadius: "20px",
+        backgroundColor: "rgba(0, 0, 0, 0.352)",
+        borderRadius: "25px",
       }}
     >
       <select
-        className="text-center text-xl"
+        className=" text-center text-xl rounded-lg"
         value={selected}
         onChange={(e) => {
           setSelected(e.target.value);
           onSetSelected(e.target.value);
         }}
-        style={{ color: "black" }}
+        style={{
+          color: "white",
+          backgroundColor: "rgba(0, 0, 0, 0.573)",
+          boxShadow: "0px 0px 15px rgb(224, 224, 237) ",
+        }}
       >
         <option>Auswählen...</option>
         {options.map((option, index) => (
