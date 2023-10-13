@@ -13,7 +13,7 @@ export default function ChatComponent({
         {
           role: "assistant",
           id: "1",
-          content: ` Das Thema ist: ${selectedOption}. Bist Du bereit?`,
+          content: ` Das Thema ist: ${selectedOption}. Du bekommst 10 Fragen und für jede richtige Antwort bekommst Du 10 Punkte. Du kast ebenfalls ein ganz besonderes Thema in diesem Gebiet als Quiz-Thema aussuchen und es mir einfach schreiben. Bist Du bereit?`,
         },
       ],
     });
