@@ -10,11 +10,11 @@ export default function DropdownComponent({
 }: DropdownComponentProps) {
   const [selected, setSelected] = useState("");
   const options = [
-    "Sport",
-    "Musik",
+    "sport",
+    "musik",
     "Filme",
     "Geschichte",
-    "Geographie",
+    "geographie",
     "Politik",
     "Physik",
   ];
