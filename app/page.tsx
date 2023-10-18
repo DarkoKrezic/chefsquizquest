@@ -7,7 +7,7 @@ export default function Home() {
   const [page, setPage] = useState<string | null>("home");
   const [selected, setSelected] = useState<string | null>(null);
 
-  const backgroundImage = "url('/kvisko.jpeg')";
+  const backgroundImage = "url('/kviskhoch.jpeg')";
 
   const handleSelected = (value: string) => {
     setSelected(value);
