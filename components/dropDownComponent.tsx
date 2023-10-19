@@ -24,12 +24,7 @@ export default function DropdownComponent({
   ];
 
   return (
-    <div
-      className="flex items-center justify-center py-7"
-      style={{
-        backgroundColor: "rgba(0, 0, 0, 0.352)",
-      }}
-    >
+    <div className="flex items-center justify-center py-4">
       <select
         className=" text-center text-xl px-2 py-4 rounded-lg"
         value={selected}
@@ -40,7 +35,8 @@ export default function DropdownComponent({
         style={{
           color: "white",
           backgroundColor: "rgba(0, 0, 0, 0.573)",
-          boxShadow: "0px 0px 15px rgb(224, 224, 237) ",
+          boxShadow: "0px 0px 15px rgba(0, 0, 0, 0.562) ",
+          textShadow: "0px 0px 15px rgba(0, 0, 0, 0.562) ",
         }}
       >
         <option>Auswählen...</option>
