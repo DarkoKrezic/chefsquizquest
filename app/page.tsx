@@ -13,6 +13,10 @@ export default function Home() {
     setSelected(value);
     setPage("chat");
   };
+  const handleRestart = () => {
+    setSelected(null);
+    setPage("home");
+  };
 
   return (
     <div>
@@ -43,6 +47,7 @@ export default function Home() {
             className="text-center text-2xl px-2 py-4"
             style={{
               backgroundColor: "rgba(0, 0, 0, 0.49)",
+              textShadow: "3px 5px 10px rgb(8, 8, 9)",
             }}
           >
             Bitte wähle ein Themengebiet aus der Liste:
@@ -51,7 +56,10 @@ export default function Home() {
         </>
       )}
       {page === "chat" && selected && (
-        <ChatComponent selectedOption={selected} />
+        <ChatComponent
+          selectedOption={selected}
+          handleRestart={handleRestart}
+        />
       )}
     </div>
   );
