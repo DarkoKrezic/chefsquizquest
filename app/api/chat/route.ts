@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   const { messages, selectedOption } = await request.json();
   console.log(selectedOption);
   const response = await openai.createChatCompletion({
-    model: "gpt-4",
+    model: "gpt-3.5-turbo-16k",
     max_tokens: 4000,
 
     stream: true,
