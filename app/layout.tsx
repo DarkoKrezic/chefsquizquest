@@ -16,7 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={luckiestGuy.className}>{children}</body>
+      <body
+        className={luckiestGuy.className}
+        style={{
+          backgroundPosition: "center",
+          backgroundImage: `url('/quizstarthintergrund.jpeg')`,
+        }}
+      >
+        {children}
+      </body>
     </html>
   );
 }
