@@ -1,12 +1,15 @@
 "use client";
 import { useChat, Message } from "ai/react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function ChatComponent({
   selectedOption,
+  handleRestart,
 }: {
   selectedOption: string;
+  handleRestart: () => void;
 }) {
+  const [restart, setRestart] = useState(false);
   const { input, handleInputChange, handleSubmit, isLoading, messages } =
     useChat({
       initialMessages: [
@@ -119,6 +122,17 @@ export default function ChatComponent({
             style={{ boxShadow: "3px 5px 10px rgb(8, 8, 9)" }}
           >
             Abschicken
+          </button>
+          <button
+            type="button"
+            onClick={handleRestart}
+            style={{
+              marginTop: "20px",
+              boxShadow: "3px 5px 10px rgb(8, 8, 9)",
+            }} // Add some space from the previous button
+            className=" rounded-md bg-blue-600 p-2  mt-2 "
+          >
+            🔄 Neue Runde Starten
           </button>
         </form>
       </div>
