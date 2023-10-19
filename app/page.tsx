@@ -73,6 +73,7 @@ export default function Home() {
             <input
               id="customSubjectInput"
               type="text"
+              placeholder="...Dein eigenes QuizThema..."
               className=" rounded-md  p-2 mt-2"
               style={{
                 boxShadow: "3px 5px 10px rgb(8, 8, 9)",
