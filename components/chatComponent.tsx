@@ -1,7 +1,7 @@
 "use client";
 import { useChat, Message } from "ai/react";
 import { useRef, useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function ChatComponent({
   selectedOption,
   handleRestart,
@@ -91,7 +91,7 @@ export default function ChatComponent({
         </div>
 
         <form
-          className="flex flex-col items-center w-full"
+          className="relative flex flex-col items-center w-full"
           onSubmit={handleSubmit}
         >
           <p
@@ -105,8 +105,70 @@ export default function ChatComponent({
           >
             Deine Antwort ⬇️ :
           </p>
+          <div className="text-4xl mt-2 gap-4 flex ">
+            <button
+              className="m-2 p-2 rounded-lg border-2 border-black-400"
+              style={{
+                backgroundColor: "rgba(97, 176, 246, 0.735)",
+                textShadow: "3px 5px 10px rgb(8, 8, 9)",
+                boxShadow: "3px 5px 15px rgb(8, 8, 9)",
+              }}
+              onClick={() =>
+                handleInputChange({
+                  target: { value: "A" },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            >
+              A
+            </button>
+            <button
+              className="m-2 p-2 rounded-lg border-2 border-black-400"
+              style={{
+                backgroundColor: "rgba(97, 176, 246, 0.735)",
+                textShadow: "3px 5px 10px rgb(8, 8, 9)",
+                boxShadow: "3px 5px 15px rgb(8, 8, 9)",
+              }}
+              onClick={() =>
+                handleInputChange({
+                  target: { value: "B" },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            >
+              B
+            </button>
+            <button
+              className="m-2 p-2 rounded-lg border-2 border-black-400"
+              style={{
+                backgroundColor: "rgba(97, 176, 246, 0.735)",
+                textShadow: "3px 5px 10px rgb(8, 8, 9)",
+                boxShadow: "3px 5px 15px rgb(8, 8, 9)",
+              }}
+              onClick={() =>
+                handleInputChange({
+                  target: { value: "C" },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            >
+              C
+            </button>
+            <button
+              className="m-2 p-2 rounded-lg border-2 border-black-400"
+              style={{
+                backgroundColor: "rgba(97, 176, 246, 0.735)",
+                textShadow: "3px 5px 10px rgb(8, 8, 9)",
+                boxShadow: "3px 5px 15px rgb(8, 8, 9)",
+              }}
+              onClick={() =>
+                handleInputChange({
+                  target: { value: "D" },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            >
+              D
+            </button>
+          </div>
           <textarea
-            className="mt-2 w-full p-2"
+            className=" relative mt-2 w-full p-2"
             style={{
               backgroundColor: "rgba(0, 0, 0, 0.762)",
               borderRadius: "5px",
@@ -118,10 +180,18 @@ export default function ChatComponent({
             onChange={handleInputChange}
           />
           <button
-            className=" rounded-md bg-blue-600 p-2  mt-2 "
-            style={{ boxShadow: "3px 5px 10px rgb(8, 8, 9)" }}
+            className="absolute bottom-14 right-0 mb-2 mr-2 rounded-md  px-3"
+            style={{
+              backgroundColor: "rgba(125, 223, 243, 0.741)",
+              boxShadow: "3px 5px 10px rgb(8, 8, 9)",
+            }}
           >
-            Abschicken
+            <Image
+              src="/icons8-paper-plane-64.png"
+              alt="Send"
+              width={32}
+              height={32}
+            />
           </button>
           <button
             type="button"
