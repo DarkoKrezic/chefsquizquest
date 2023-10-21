@@ -24,7 +24,7 @@ export default function DropdownComponent({
   ];
 
   return (
-    <div className="flex items-center justify-center py-4">
+    <div className="flex items-center justify-center py-2">
       <select
         className=" text-center text-xl px-2 py-4 rounded-lg"
         value={selected}

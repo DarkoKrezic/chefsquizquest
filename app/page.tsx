@@ -2,6 +2,7 @@
 import { useState } from "react";
 import DropdownComponent from "@/components/dropDownComponent";
 import ChatComponent from "@/components/chatComponent";
+import Image from "next/image";
 
 export default function Home() {
   const [page, setPage] = useState<string | null>("home");
@@ -40,9 +41,9 @@ export default function Home() {
           ></div>
 
           <h2
-            className="text-6xl font-bold text-center py-10"
+            className="text-6xl font-bold text-center py-6"
             style={{
-              backgroundColor: "rgba(0, 0, 0, 0.49)",
+              // backgroundColor: "rgba(0, 0, 0, 0.49)",
               textShadow: "3px 5px 10px rgb(8, 8, 9)",
             }}
           >
@@ -51,20 +52,20 @@ export default function Home() {
           <p
             className="text-center text-2xl px-2 py-4"
             style={{
-              backgroundColor: "rgba(0, 0, 0, 0.49)",
+              backgroundColor: "rgba(0, 0, 0, 0.221)",
               textShadow: "3px 5px 10px rgb(8, 8, 9)",
             }}
           >
             Bitte wähle ein Themengebiet aus der Liste:
           </p>
           <DropdownComponent onSetSelected={handleSelected} />
-          <div className="flex flex-col justify-center ">
+          <div className="relative flex flex-col justify-center ">
             <label
               htmlFor="customSubjectInput"
               className=" text-center text-xl px-2 py-4 rounded-lg"
               style={{
                 boxShadow: "3px 5px 10px rgb(8, 8, 9)",
-                backgroundColor: "rgba(0, 0, 0, 0.49)",
+                backgroundColor: "rgba(0, 0, 0, 0.223)",
                 textShadow: "3px 5px 10px rgb(8, 8, 9)",
               }}
             >
@@ -74,7 +75,7 @@ export default function Home() {
               id="customSubjectInput"
               type="text"
               placeholder="...Dein eigenes QuizThema..."
-              className=" rounded-md  p-2 mt-2"
+              className=" text-center relative rounded-md  p-4 mt-2 text-sm"
               style={{
                 boxShadow: "3px 5px 10px rgb(8, 8, 9)",
                 backgroundColor: "rgba(0, 0, 0, 0.741)",
@@ -82,14 +83,20 @@ export default function Home() {
               onChange={(e) => setCustomSubject(e.target.value)}
             />
             <button
-              className=" rounded-md bg-blue-600  p-2  w-max "
+              className=" text-3xl absolute bottom-0 right-0 mb-2 mr-2 rounded-md px-3  "
               style={{
                 boxShadow: "3px 5px 10px rgb(8, 8, 9)",
                 marginTop: "20px",
+                backgroundColor: "rgba(125, 223, 243, 0.741)",
               }}
               onClick={handleCustomSubmit}
             >
-              📩 Eigenes Thema senden
+              <Image
+                src="/icons8-paper-plane-64.png"
+                alt="Send"
+                width={32}
+                height={32}
+              />
             </button>
           </div>
         </>
