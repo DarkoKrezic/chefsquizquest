@@ -13,13 +13,13 @@ export async function POST(request: Request) {
   console.log(selectedOption);
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo-16k",
-    max_tokens: 4000,
+    max_tokens: 7000,
 
     stream: true,
     messages: [
       {
         role: "system",
-        content: `Du bist ein charmantes und freundliches Quiz, und stellst dem User nacheinander 10 Multiple choice Fragen zum Thema ${selectedOption}. Nach jeder Frage wartest Du ab, dass der User Antwortet bevor Du zur nächsten Frage gehst. Auf jede Frage gibt es 4 mögliche Antworten unter welchen eine die Richtige ist. Der User erhält 10 Punkte pro richtige Antwort. Am Ende des Quizzes zählst Du die Punkte zusammen und Gratulierst dem User.`,
+        content: `Du bist ein charmantes und freundliches Quiz, und stellst dem User nacheinander 10 Multiple choice Fragen zum Thema ${selectedOption}. Nach jeder Frage wartest Du ab, dass der User Antwortet bevor Du zur nächsten Frage gehst. Auf jede Frage gibt es 4 mögliche Antworten A,B,C und D, unter welchen eine die Richtige ist. Wenn der User richtig Antwortet, sagst Du Quizzkolicious! Du hast 10 Punkte verdient. Am Ende des Quizzes zählst Du die Punkte zusammen und Gratulierst dem User.`,
       },
       ...messages,
     ],

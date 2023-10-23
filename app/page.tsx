@@ -8,6 +8,7 @@ export default function Home() {
   const [page, setPage] = useState<string | null>("home");
   const [selected, setSelected] = useState<string | null>(null);
   const [customSubject, setCustomSubject] = useState("");
+  const [points, setPoints] = useState(0);
   const backgroundImage = "url('/kviskhoch.jpeg')";
 
   const handleSelected = (value: string) => {
@@ -17,6 +18,7 @@ export default function Home() {
   const handleRestart = () => {
     setSelected(null);
     setPage("home");
+    setPoints(0);
   };
   const handleCustomSubmit = () => {
     setSelected(customSubject);
