@@ -9,6 +9,11 @@ export default function ChatComponent({
   selectedOption: string;
   handleRestart: () => void;
 }) {
+  const [lastScoredMessageId, setLastScoredMessageId] = useState<string | null>(
+    null
+  );
+  const [points, setPoints] = useState(0);
+  const [isScoreUpdated, setIsScoreUpdated] = useState(false);
   const [restart, setRestart] = useState(false);
   const { input, handleInputChange, handleSubmit, isLoading, messages } =
     useChat({
@@ -21,13 +26,32 @@ export default function ChatComponent({
       ],
     });
   const backgroundImage = `url(/${selectedOption}.jpeg)`;
-
+  const triggerWord = "Quizzkolicious!";
   const messagesEndRef = useRef<null | HTMLDivElement>(null);
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
   useEffect(scrollToBottom, [messages]);
+  useEffect(() => {
+    // Get the last message from the assistant
+    const lastMessage = messages[messages.length - 1];
 
+    if (
+      lastMessage &&
+      lastMessage.role === "assistant" &&
+      lastMessage.content.includes(triggerWord) &&
+      lastMessage.id !== lastScoredMessageId
+    ) {
+      // Increase the points by 10
+      setPoints((prevPoints) => prevPoints + 10);
+      setLastScoredMessageId(lastMessage.id);
+      setIsScoreUpdated(true);
+
+      setTimeout(() => {
+        setIsScoreUpdated(false);
+      }, 500);
+    }
+  }, [messages, lastScoredMessageId]); // Add messages to the dependencies array
   return (
     <main
       className="flex min-h-screen flex-col items-center justify-between p-10"
@@ -38,10 +62,17 @@ export default function ChatComponent({
         backgroundSize: "cover",
       }}
     >
-      <div className="flex flex-col">
+      <section className="flex flex-col">
+        <span
+          className={`absolute top-0 right-0 px-4 py-2 rounded-md bg-white opacity-60 text-black shadow-2xl ${
+            isScoreUpdated ? "score-updated" : ""
+          }`}
+        >
+          Punkte: {points}
+        </span>{" "}
         <div
           style={{
-            maxHeight: "570px",
+            maxHeight: "50vh",
             color: "white",
             backgroundColor: "rgba(0, 0, 0, 0.764)",
             borderRadius: "5px",
@@ -87,9 +118,8 @@ export default function ChatComponent({
               </div>
             );
           })}
-          <div ref={messagesEndRef} />{" "}
+          <div ref={messagesEndRef} />
         </div>
-
         <form
           className="relative flex flex-col items-center w-full"
           onSubmit={handleSubmit}
@@ -205,7 +235,7 @@ export default function ChatComponent({
             🔄 Neue Runde Starten
           </button>
         </form>
-      </div>
+      </section>
     </main>
   );
 }
