@@ -12,6 +12,7 @@ export default function ChatComponent({
   const [lastScoredMessageId, setLastScoredMessageId] = useState<string | null>(
     null
   );
+  const scoreUpdateSoundRef = useRef<HTMLAudioElement>(null);
   const [points, setPoints] = useState(0);
   const [isScoreUpdated, setIsScoreUpdated] = useState(false);
   const [restart, setRestart] = useState(false);
@@ -46,6 +47,10 @@ export default function ChatComponent({
       setPoints((prevPoints) => prevPoints + 10);
       setLastScoredMessageId(lastMessage.id);
       setIsScoreUpdated(true);
+      // Play the sound
+      if (scoreUpdateSoundRef.current) {
+        scoreUpdateSoundRef.current.play();
+      }
 
       setTimeout(() => {
         setIsScoreUpdated(false);
@@ -63,13 +68,6 @@ export default function ChatComponent({
       }}
     >
       <section className="flex flex-col">
-        <span
-          className={`absolute top-0 right-0 px-4 py-2 rounded-md bg-white opacity-60 text-black shadow-2xl ${
-            isScoreUpdated ? "score-updated" : ""
-          }`}
-        >
-          Punkte: {points}
-        </span>{" "}
         <div
           style={{
             maxHeight: "50vh",
@@ -80,17 +78,38 @@ export default function ChatComponent({
           }}
           className="flex-grow mb-auto w-full overflow-auto"
         >
+          <span
+            className={`absolute top-0 right-0 px-4 py-2 mt-2 mr-2 rounded-md bg-white opacity-60 text-black shadow-2xl ${
+              isScoreUpdated ? "score-updated" : ""
+            }`}
+          >
+            Punkte: {points}
+          </span>
+          {isScoreUpdated && (
+            <audio
+              ref={scoreUpdateSoundRef}
+              src="/scoreUpdateSound.mp3"
+              autoPlay={true}
+            />
+          )}
           {messages.map((message: Message) => {
             return (
               <div key={message.id}>
                 {message.role === "assistant" ? (
-                  <h3 className="text-lg px-2 font-semibold mt-2 text-gray-400">
-                    QuizzMaster:
+                  <h3
+                    className="text-lg px-2 font-semibold mt-2 text-gray-400"
+                    style={{
+                      textShadow: "1px 1px 3px rgba(0, 0, 0, 0.879)",
+                    }}
+                  >
+                    Quizzko:
                   </h3>
                 ) : (
                   <h3
-                    className="text-lg font-semibold mt-2 px-2"
-                    style={{ color: "gray" }}
+                    className="text-lg font-semibold mt-2 px-2 text-gray-400"
+                    style={{
+                      textShadow: "1px 1px 3px rgba(0, 0, 0, 0.879)",
+                    }}
                   >
                     Du:
                   </h3>
@@ -145,7 +164,7 @@ export default function ChatComponent({
               }}
               onClick={() =>
                 handleInputChange({
-                  target: { value: "A" },
+                  target: { value: "A)" },
                 } as React.ChangeEvent<HTMLInputElement>)
               }
             >
@@ -160,7 +179,7 @@ export default function ChatComponent({
               }}
               onClick={() =>
                 handleInputChange({
-                  target: { value: "B" },
+                  target: { value: "B)" },
                 } as React.ChangeEvent<HTMLInputElement>)
               }
             >
@@ -175,7 +194,7 @@ export default function ChatComponent({
               }}
               onClick={() =>
                 handleInputChange({
-                  target: { value: "C" },
+                  target: { value: "C)" },
                 } as React.ChangeEvent<HTMLInputElement>)
               }
             >
@@ -190,7 +209,7 @@ export default function ChatComponent({
               }}
               onClick={() =>
                 handleInputChange({
-                  target: { value: "D" },
+                  target: { value: "D)" },
                 } as React.ChangeEvent<HTMLInputElement>)
               }
             >
